@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Success Is Its Own Trap — ZenIndependence</title>
+  <meta name="description" content="You've built a successful career. And you want something wildly different. Get the free guide that shows you exactly how to make that leap." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0F2318;
+      --cream: #F2EDE3;
+      --gold: #C9974E;
+      --gold-dim: rgba(201,151,78,0.25);
+      --text-dim: rgba(242,237,227,0.55);
+      --text-mid: rgba(242,237,227,0.78);
+      --border: rgba(242,237,227,0.1);
+    }
+
+    html, body {
+      min-height: 100%;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* Brand */
+    .brand {
+      position: fixed;
+      top: 28px; left: 48px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: rgba(242,237,227,0.4);
+      text-decoration: none;
+      z-index: 10;
+      transition: color 0.2s;
+    }
+    .brand span { color: rgba(201,151,78,0.6); }
+    .brand:hover { color: rgba(242,237,227,0.7); }
+
+    /* ── PAGE GRID ── */
+    .page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 48px;
+      align-items: center;
+      gap: 72px;
+    }
+
+    /* ── LEFT: COPY ── */
+    .copy {
+      padding: 96px 0 80px;
+    }
+
+    /* Eyebrow */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: up 0.65s 0.05s ease forwards;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 26px; height: 1px;
+      background: var(--gold);
+      opacity: 0.7;
+    }
+
+    /* Main headline */
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(44px, 4.8vw, 68px);
+      font-weight: 300;
+      line-height: 1.08;
+      color: var(--cream);
+      margin-bottom: 10px;
+      opacity: 0;
+      animation: up 0.65s 0.12s ease forwards;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    /* Sub-headline */
+    .sub-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 2vw, 24px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-dim);
+      margin-bottom: 32px;
+      line-height: 1.4;
+      opacity: 0;
+      animation: up 0.65s 0.18s ease forwards;
+    }
+
+    /* Body copy */
+    .body-copy {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.85;
+      max-width: 460px;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: up 0.65s 0.24s ease forwards;
+    }
+
+    .body-copy strong {
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    /* Objection-handle line */
+    .objection {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-dim);
+      font-style: italic;
+      max-width: 420px;
+      margin-bottom: 36px;
+      padding-left: 16px;
+      border-left: 2px solid var(--gold-dim);
+      line-height: 1.7;
+      opacity: 0;
+      animation: up 0.65s 0.3s ease forwards;
+    }
+
+    /* What's inside */
+    .inside-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+      opacity: 0;
+      animation: up 0.65s 0.34s ease forwards;
+    }
+
+    .inside-list {
+      list-style: none;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: up 0.65s 0.38s ease forwards;
+    }
+
+    .inside-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.55;
+    }
+    .inside-list li:first-child { border-top: 1px solid var(--border); }
+
+    .bullet {
+      color: var(--gold);
+      font-size: 9px;
+      margin-top: 5px;
+      flex-shrink: 0;
+      opacity: 0.8;
+    }
+
+    /* Form */
+    .form-wrap {
+      opacity: 0;
+      animation: up 0.65s 0.45s ease forwards;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 0;
+      margin-bottom: 12px;
+    }
+
+    input[type="email"] {
+      flex: 1;
+      padding: 16px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      background: rgba(242,237,227,0.05);
+      border: 1px solid rgba(242,237,227,0.12);
+      border-right: none;
+      color: var(--cream);
+      outline: none;
+      border-radius: 2px 0 0 2px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    input[type="email"]:focus {
+      background: rgba(242,237,227,0.09);
+      border-color: rgba(201,151,78,0.45);
+    }
+    input[type="email"]::placeholder { color: rgba(242,237,227,0.2); }
+
+    .btn-submit {
+      padding: 16px 26px;
+      background: var(--gold);
+      color: #0F2318;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      border: none;
+      border-radius: 0 2px 2px 0;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-submit:hover { background: #D4A85C; transform: translateX(2px); }
+
+    .form-note {
+      font-size: 12px;
+      color: rgba(242,237,227,0.25);
+    }
+
+    /* Trust row */
+    .trust {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: up 0.65s 0.52s ease forwards;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      color: rgba(242,237,227,0.28);
+    }
+    .trust-dot {
+      width: 3px; height: 3px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+
+    /* ── RIGHT: VISUAL ── */
+    .visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 0;
+      gap: 32px;
+      opacity: 0;
+      animation: up 0.8s 0.5s ease forwards;
+    }
+
+    /* Book */
+    .book-wrap {
+      position: relative;
+      width: 260px;
+      height: 340px;
+    }
+
+    .book-glow {
+      position: absolute;
+      width: 240px; height: 240px;
+      background: radial-gradient(circle, rgba(201,151,78,0.16) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .book-shadow {
+      position: absolute;
+      bottom: -16px; left: 50%;
+      transform: translateX(-50%);
+      width: 160px; height: 20px;
+      background: radial-gradient(ellipse, rgba(0,0,0,0.55) 0%, transparent 70%);
+    }
+
+    .book {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) perspective(700px) rotateY(-16deg) rotateX(3deg);
+      width: 200px; height: 268px;
+      filter: drop-shadow(-18px 18px 36px rgba(0,0,0,0.65));
+      transition: transform 0.5s ease;
+    }
+    .book:hover {
+      transform: translate(-50%, -50%) perspective(700px) rotateY(-6deg) rotateX(1deg);
+    }
+
+    .book-cover {
+      width: 200px; height: 268px;
+      background: linear-gradient(150deg, #1C3A2E 0%, #0D1F14 100%);
+      border: 1px solid rgba(201,151,78,0.28);
+      border-radius: 2px 5px 5px 2px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 22px;
+      overflow: hidden;
+    }
+
+    /* Spine */
+    .book-cover::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 12px;
+      background: linear-gradient(to right, #081510, #1C3A2E);
+      border-right: 1px solid rgba(201,151,78,0.18);
+    }
+
+    /* Top accent line */
+    .book-cover::after {
+      content: '';
+      position: absolute;
+      top: 18px; left: 22px; right: 18px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,151,78,0.35), transparent);
+    }
+
+    .book-tag {
+      font-size: 7px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.75;
+      margin-bottom: 16px;
+      margin-top: 6px;
+    }
+
+    .book-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--cream);
+      text-align: center;
+      line-height: 1.35;
+      margin-bottom: 16px;
+    }
+    .book-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .book-rule {
+      width: 28px; height: 1px;
+      background: rgba(201,151,78,0.38);
+      margin-bottom: 14px;
+    }
+
+    .book-sub {
+      font-size: 8px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(242,237,227,0.35);
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .book-brand {
+      position: absolute;
+      bottom: 14px;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      color: rgba(201,151,78,0.4);
+      text-transform: uppercase;
+    }
+
+    .book-pages {
+      position: absolute;
+      right: -5px; top: 3px; bottom: 3px;
+      width: 10px;
+      background: repeating-linear-gradient(
+        to right,
+        #e0d8c8, #e0d8c8 1px,
+        #cec4b0 1px, #cec4b0 2px
+      );
+      border-radius: 0 3px 3px 0;
+      opacity: 0.55;
+    }
+
+    /* Pull quote below book */
+    .pull-quote {
+      max-width: 280px;
+      text-align: center;
+    }
+
+    .pull-quote blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(242,237,227,0.5);
+      line-height: 1.55;
+      position: relative;
+    }
+
+    .pull-quote blockquote::before {
+      content: '\201C';
+      font-size: 48px;
+      color: var(--gold);
+      opacity: 0.3;
+      position: absolute;
+      top: -18px;
+      left: -10px;
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 1;
+    }
+
+    .pull-quote cite {
+      display: block;
+      font-size: 11px;
+      font-style: normal;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(242,237,227,0.22);
+      margin-top: 12px;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes up {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .brand { left: 24px; top: 20px; }
+
+      .page {
+        grid-template-columns: 1fr;
+        padding: 0 24px;
+        gap: 0;
+      }
+
+      .copy { padding: 88px 0 40px; }
+
+      .visual {
+        order: -1;
+        padding: 24px 0 0;
+      }
+
+      .book-wrap { width: 180px; height: 240px; }
+      .book { width: 150px; height: 200px; }
+      .book-cover { width: 150px; height: 200px; padding: 20px 16px; }
+      .book-title { font-size: 15px; }
+      .book-pages { right: -4px; }
+      .book-glow { width: 180px; height: 180px; }
+
+      .pull-quote { display: none; }
+
+      .form-row { flex-direction: column; }
+      input[type="email"] {
+        border-right: 1px solid rgba(242,237,227,0.12);
+        border-bottom: none;
+        border-radius: 2px 2px 0 0;
+      }
+      .btn-submit {
+        border-radius: 0 0 2px 2px;
+        text-align: center;
+      }
+
+      h1 { font-size: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#" class="brand">Zen<span>Independence</span></a>
+
+  <div class="page">
+
+    <!-- COPY -->
+    <div class="copy">
+
+      <p class="eyebrow">Free Guide — Mini-Retirement</p>
+
+      <h1>Success is<br>its own <em>trap.</em></h1>
+
+      <p class="sub-headline">And you already know this.</p>
+
+      <p class="body-copy">
+        You are in your 40s. Capable. Established. And quietly aware that the next 20 years doing 
+        <strong>exactly this</strong> would be a kind of slow suffocation.
+        The fantasies of doing something different aren't weakness — they're wisdom. 
+        You have what younger people chasing this dream don't: <strong>the capital to actually do it.</strong>
+      </p>
+
+      <p class="objection">
+        Yes — even with the mortgage. The kids. The responsibilities. This guide shows you 
+        why those are the ticket in, not the reason to stay out.
+      </p>
+
+      <p class="inside-label">What you'll get</p>
+
+      <ul class="inside-list">
+        <li>
+          <span class="bullet">✦</span>
+          The licence-to-create formula — calculate your personal freedom number in 5 minutes
+        </li>
+        <li>
+          <span class="bullet">✦</span>
+          Why 250–300K is enough to make the leap (and why waiting for a million wastes your best years)
+        </li>
+        <li>
+          <span class="bullet">✦</span>
+          How a small side income of £1,500/month can make your savings last forever
+        </li>
+        <li>
+          <span class="bullet">✦</span>
+          The two questions that actually matter — and how to answer them before you decide
+        </li>
+      </ul>
+
+      <div class="form-wrap">
+        <div class="form-row">
+          <input type="email" placeholder="Your email address" />
+          <button class="btn-submit">Send me the guide →</button>
+        </div>
+        <p class="form-note">Free. Instant download. No spam — ever.</p>
+      </div>
+
+      <div class="trust">
+        <div class="trust-item"><span class="trust-dot"></span>Instant download</div>
+        <div class="trust-item"><span class="trust-dot"></span>No credit card</div>
+        <div class="trust-item"><span class="trust-dot"></span>Unsubscribe anytime</div>
+      </div>
+
+    </div>
+
+    <!-- VISUAL -->
+    <div class="visual">
+
+      <div class="book-wrap">
+        <div class="book-glow"></div>
+        <div class="book-shadow"></div>
+        <div class="book">
+          <div class="book-cover">
+            <p class="book-tag">ZenIndependence</p>
+            <h2 class="book-title">The Mini&#8209;Retirement<br><em>Readiness</em><br>Guide</h2>
+            <div class="book-rule"></div>
+            <p class="book-sub">Your number.<br>Your timeline.<br>Your leap.</p>
+            <p class="book-brand">zenindependence.com</p>
+          </div>
+          <div class="book-pages"></div>
+        </div>
+      </div>
+
+      <div class="pull-quote">
+        <blockquote>
+          Not young enough to be reckless.<br>
+          Not old enough to have stopped dreaming.
+        </blockquote>
+        <cite>The case for your 40s</cite>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
